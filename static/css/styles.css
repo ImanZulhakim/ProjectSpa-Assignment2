@@ -248,7 +248,7 @@
 }
 .home-section{
   position: relative;
-  background: #E4E9F7;
+  background: white;
   min-height: 100vh;
   top: 0;
   left: 78px;
@@ -261,9 +261,9 @@
   width: calc(100% - 250px);
 }
 .home-section .text{
-  display: inline-block;
+  text-align: center;
   color: #11101d;
-  font-size: 25px;
+  font-size: 50px;
   font-weight: 500;
   margin: 18px
 }
@@ -273,7 +273,60 @@
   }
 }
 
+/* custom.css */
 
+/* Adjust the width of each column*/
+th.customer-name,
+td.customer-name {
+    width: 300px; /* Adjust the width as needed */
+}
+th.customer-taken,
+td.customer-taken {
+    width: 280px; /* Adjust the width as needed */
+}
+th.customer-phone,
+td.customer-phone {
+    width: 150px; /* Adjust the width as needed */
+}
+th.treatment-name,
+td.treatment-name {
+    width: 300px; /* Adjust the width as needed */
+}
+th.treatment-category,
+td.treatment-category {
+    width: 150px; /* Adjust the width as needed */
+}
+th.treatment-description,
+td.treatment-description {
+    width: 350px; /* Adjust the width as needed */
+}
+th.treatment-price,
+td.treatment-price {
+    width: 150px; /* Adjust the width as needed */
+}
+
+.table-dark {
+    color: #fff;
+    background-color: #343a40;
+    border: #1d1b31;
+}
+
+.table-dark th,
+.table-dark td,
+.table-dark thead th {
+    border-color: #3c3c3c;
+}
+
+.table-dark.table-bordered {
+    border: 0;
+}
+
+.table-dark.table-bordered th,
+.table-dark.table-bordered td,
+.table-dark.table-bordered thead th,
+.table-dark.table-bordered tbody+tbody {
+    border: 1px solid #454d55;
+}
 customers ----->> css2
      body {
          color: #2aabd2;

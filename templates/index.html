@@ -4,52 +4,62 @@
 {% block content %}
 <section class="home-section">
     <div class="text">Dashboard</div>
-    <div class="container mt-4">
+    <link href="{{url_for('static', filename = 'css/bootstrap.min.css')}}" rel="stylesheet">
+
+
+    <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <h2>Customer Data</h2>
-                <table class="table table-striped">
+            <div class="col-md-12">
+                <h2>Customers List</h2>
+
+
+
+                <table class="table table-bordered ">
                     <tr>
-                        <th>CustomerID</th>
-                        <th>Name</th>
-                        <th>Treatment Name</th>
-                        <th>Phone</th>
-                        <th>Action</th>
+                        <th class="customer-name">Customer Name</th>
+                        <th class="customer-taken">Treatment Taken</th>
+                        <th class="customer-phone">Phone</th>
                     </tr>
                     {% for row in customers %}
                         <tr>
-                            <td>{{ row[0] }}</td>
-                            <td>{{ row[1] }}</td>
-                            <td>{{ row[2] }}</td>
-                            <td>{{ row[3] }}</td>
+                            <td class="customer-name">{{ row[1] }}</td>
+                            <td class="customer-taken">{{ row[2] }}</td>
+                            <td class="customer-phone">{{ row[3] }}</td>
+
+
                         </tr>
                     {% endfor %}
                 </table>
             </div>
-            <div class="col-md-6">
-                <h2>Treatment Data</h2>
-                <table class="table table-striped">
-                    <thead>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2>Treatments List</h2>
+                <table class="table table-bordered ">
+                    <tr>
+                        <th class="treatment-name">Treatment Name</th>
+                        <th class="treatment-category">Category</th>
+                        <th class="treatment-description">Description</th>
+                        <th class="treatment-price">Price</th>
+                    </tr>
+                    {% for row in treatments %}
                         <tr>
-                            <th>TreatmentID</th>
-                            <th>Treatment Name</th>
-                            <th>Category</th>
-                            <th>Description</th>
+                            <td class="treatment-name">{{ row[1] }}</td>
+                            <td class="treatment-category">{{ row[2] }}</td>
+                            <td class="treatment-description">{{ row[3] }}</td>
+                            <td class="treatment-price">RM {{ row[4] }}</td>
+
+
                         </tr>
-                    </thead>
-                    <tbody>
-                        {% for treatment in treatments %}
-                        <tr>
-                            <td>{{ treatment[0] }}</td>
-                            <td>{{ treatment[1] }}</td>
-                            <td>{{ treatment[2] }}</td>
-                            <td>{{ treatment[3] }}</td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
+                    {% endfor %}
                 </table>
             </div>
         </div>
     </div>
+
 </section>
 {% endblock %}

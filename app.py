@@ -22,7 +22,26 @@ logging.basicConfig(level=logging.DEBUG)
 
 @app.route('/')
 def main():
-    return render_template('index.html')
+    try:
+        # Fetch customers data
+        cur_customers = mysql.cursor()
+        cur_customers.execute("SELECT * FROM customers")
+        customers_data = cur_customers.fetchall()
+        cur_customers.close()
+
+        # Fetch treatments data
+        cur_treatments = mysql.cursor()
+        cur_treatments.execute("SELECT * FROM treatments")
+        treatments_data = cur_treatments.fetchall()
+        cur_treatments.close()
+
+        return render_template('index.html', customers=customers_data, treatments=treatments_data)
+    except Exception as e:
+        logging.exception("Error retrieving data:")
+        flash("An error occurred while retrieving data.")
+        return redirect(url_for('customers'))
+
+
 
 
 @app.route('/customers')
@@ -39,31 +58,26 @@ def customers():
         return redirect(url_for('customers'))
 
 
-@app.route('/insert_customer', methods=['GET', 'POST'])
+@app.route('/insert_customer', methods=['POST'])
 def insert_customer():
-    if request.method == "POST":
-        try:
-            name = request.form['name']
-            treatment_name = request.form['treatment_name']
-            phone = request.form['phone']
+    try:
+        name = request.form['name']
+        treatment_name = request.form['treatment_name']
+        phone = request.form['phone']
 
-            cur = mysql.cursor()
-            cur.execute("INSERT INTO customers (name, treatment_name, phone) VALUES (%s, %s, %s)",
-                        (name, treatment_name, phone))
-            mysql.commit()
+        cur = mysql.cursor()
+        cur.execute("INSERT INTO customers (name, treatment_name, phone) VALUES (%s, %s, %s)",
+                    (name, treatment_name, phone))
+        mysql.commit()
 
-            flash("Customer Data Inserted Successfully")
-            return redirect(url_for('customers'))
+        flash("Customer Data Inserted Successfully")
+        return redirect(url_for('customers'))
 
-        except Exception as e:
-            logging.exception("Error inserting customer data:")
-            logging.error("Name: %s, Treatment Name: %s, Phone: %s", name, treatment_name, phone)
-            flash("An error occurred while inserting customer data.")
-            return redirect(url_for('customers'))
-
-
-    else:
-        return render_template('customers.html')
+    except Exception as e:
+        logging.exception("Error inserting customer data:")
+        logging.error("Name: %s, Treatment Name: %s, Phone: %s", name, treatment_name, phone)
+        flash("An error occurred while inserting customer data.")
+        return redirect(url_for('customers'))
 
 
 @app.route('/update_customer', methods=['POST'])
