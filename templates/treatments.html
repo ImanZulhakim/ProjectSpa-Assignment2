@@ -77,9 +77,9 @@
                         <div class="form-group">
                             <label>Category:</label>
                             <select class="form-control" name="category" required>
-                                <option value="Massage">Massage</option>
-                                <option value="Facial">Facial</option>
-                                <option value="Reflexology">Reflexology</option>
+                                <option value="Massage" {% if row[2] == "Massage" %}selected{% endif %}>Massage</option>
+                                <option value="Facial" {% if row[2] == "Facial" %}selected{% endif %}>Facial</option>
+                                <option value="Reflexology" {% if row[2] == "Reflexology" %}selected{% endif %}>Reflexology</option>
                             </select>
                         </div>
                         <div class="form-group">
@@ -120,7 +120,11 @@
                     </div>
                     <div class="form-group">
                         <label>Category:</label>
-                        <input type="text" class="form-control" name="category" required>
+                        <select class="form-control" name="category" required>
+                            <option value="Massage">Massage</option>
+                            <option value="Facial">Facial</option>
+                            <option value="Reflexology">Reflexology</option>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>Description:</label>

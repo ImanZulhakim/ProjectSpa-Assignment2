@@ -248,7 +248,6 @@
 }
 .home-section{
   position: relative;
-  background: white;
   min-height: 100vh;
   top: 0;
   left: 78px;
@@ -306,9 +305,9 @@ td.treatment-price {
 }
 
 .table-dark {
-    color: #fff;
-    background-color: #343a40;
-    border: #1d1b31;
+    color: black;
+    background-color: #adadad;
+    border: #0f0f0f;
 }
 
 .table-dark th,
@@ -326,6 +325,7 @@ td.treatment-price {
 .table-dark.table-bordered thead th,
 .table-dark.table-bordered tbody+tbody {
     border: 1px solid #454d55;
+    background-color: #3c3c3c;
 }
 customers ----->> css2
      body {
@@ -394,7 +394,7 @@ customers ----->> css2
      	background-color: #fcfcfc;
  	}
  	table.table-striped.table-hover tbody tr:hover {
- 		background: #f5f5f5;
+ 		background: #3c3c3c;
  	}
      table.table th i {
          font-size: 13px;
